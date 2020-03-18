@@ -9,7 +9,8 @@
     "eject": "expo eject",
     "lint": "eslint *.js **/*.js",
     "lint:fix": "eslint *.js **/*.js --fix",
-    "test": "jest"
+    "test": "jest",
+    "system-test": "cavy"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
@@ -56,6 +57,7 @@
     "@babel/core": "^7.0.0",
     "babel-eslint": "^10.0.3",
     "babel-preset-expo": "~8.0.0",
+    "cavy": "^3.2.0",
     "eslint": "^6.8.0",
     "jest": "^25.1.0"
   },

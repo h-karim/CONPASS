@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Button } from 'react-native-elements';
+import { hook } from 'cavy';
 import styles from './styles';
 
-export default class SwitchCampuses extends Component {
+class SwitchCampuses extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,9 +38,13 @@ export default class SwitchCampuses extends Component {
   render() {
     if (this.props.visiblityState) {
       return (
-        <View style={styles.container}>
+        <View
+          ref={this.props.generateTestHook('SwitchCampuses')}
+          style={styles.container}
+        >
           <View style={styles.btn}>
             <Button
+              ref={this.props.generateTestHook('SwitchCampuses.SetLoyolaButton')}
               title="Loyola"
               onPress={() => { this.setLoyola(); }}
             />
@@ -47,6 +52,7 @@ export default class SwitchCampuses extends Component {
 
           <View style={styles.btn}>
             <Button
+              ref={this.props.generateTestHook('SwitchCampuses.SetSGWButton')}
               title="SGW"
               onPress={() => { this.setSGW(); }}
             />
@@ -57,3 +63,5 @@ export default class SwitchCampuses extends Component {
     return null;
   }
 }
+
+export default hook(SwitchCampuses);
