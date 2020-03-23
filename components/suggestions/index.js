@@ -7,7 +7,6 @@ import styles from './styles';
 import CloseBUtton from './closeButton';
 
 class Suggestions extends Component {
-
       buildingName = () => {
         return (`${this.props.suggestion.buildingName} `);
       }
@@ -33,7 +32,7 @@ class Suggestions extends Component {
           <Image style={styles.image} source={item.image} />
           <View style={styles.information}>
             <Text style={styles.name}>{ item.name }</Text>
-            <Text style={styles.name}>{'Open Hours: '+ item.opening[0] +'-'+ item.opening[1]}</Text>
+            <Text style={styles.name}>{`Open Hours: ${item.opening[0]}-${item.opening[1]}`}</Text>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity onPress={() => { this.passDirections(item.placeID); }}>
@@ -42,11 +41,6 @@ class Suggestions extends Component {
           </View>
         </View>
       );
-    }
-
-    passDestination = ({ destination }) => {
-      // this.props.getDestination(destination);
-      console.log("hellloo");
     }
 
     render() {
@@ -66,7 +60,7 @@ class Suggestions extends Component {
             data={content}
             extraData={content}
             renderItem={this._renderItem}
-            keyExtractor={item => item.id}
+            keyExtractor={(item) => { return item.id; }}
             horizontal
             sliderWidth={Dimensions.get('window').width}
             itemWidth={300}

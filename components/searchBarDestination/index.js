@@ -26,6 +26,7 @@ export default class searchBarDestination extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.getRegionFromSearch);
     this.setState({ isMounted: true });
     if (this.props.getRegionFromSearch && this.props.getRegionFromSearch.latitude !== '') {
       this.setState({
@@ -35,10 +36,11 @@ export default class searchBarDestination extends Component {
         }
       });
       this.drawPath();
+    } else {
+      this.props.coordinateCallback([]);
     }
 
     if (this.props.directionsId) {
-      console.log(this.props.directionsId);
       this.getLatLong(this.props.directionsId);
     }
   }
@@ -47,9 +49,7 @@ export default class searchBarDestination extends Component {
     if (prevProps.drawPath !== this.props.drawPath) {
       this.drawPath();
     }
-    console.log("---I am here---");
     if (prevProps.directionsId !== this.props.directionsId) {
-      console.log("--I am here--");
       this.getLatLong(this.props.directionsId);
       this.drawPath();
     }

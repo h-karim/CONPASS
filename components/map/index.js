@@ -28,7 +28,7 @@ export default class TheMap extends Component {
   componentDidUpdate(prevProps) {
     const coordinates = this.props.updatedCoordinates;
     if (prevProps.updatedCoordinates !== coordinates) {
-      this.fitScreenToPath(coordinates);
+      // this.fitScreenToPath(coordinates);
     }
   }
 
@@ -39,11 +39,13 @@ export default class TheMap extends Component {
 
 
   fitScreenToPath(coordinates) {
-    this.state.mapRef.fitToCoordinates(coordinates, {
-      edgePadding: {
-        top: 180, right: 20, bottom: 10, left: 20
-      }
-    });
+    if (coordinates !== []) {
+      this.state.mapRef.fitToCoordinates(coordinates, {
+        edgePadding: {
+          top: 180, right: 20, bottom: 10, left: 20
+        }
+      });
+    }
   }
 
   render() {

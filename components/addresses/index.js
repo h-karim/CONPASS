@@ -24,7 +24,8 @@ export default class Addresses extends Component {
         longitudeDelta: 0.05
       },
       hide: true,
-      drawPath: true
+      drawPath: true,
+      resetDestination: false
     };
   }
 
@@ -82,6 +83,7 @@ export default class Addresses extends Component {
           <Walking />
           <View style={styles.container}>
             <BackButton
+              getDestinationIfSet={this.props.getDestinationIfSetFun}
               changeVisibilityTo={this.props.changeVisibilityTo}
               coordinateCallback={this.updateCoordinates}
             />

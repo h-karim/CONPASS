@@ -73,6 +73,17 @@ class Home extends Component {
    */
   getDestinationIfSet = (destination) => {
     this.setState({ destinationToGo: destination });
+    if (destination === '') {
+      this.setState({
+        region: {
+          latitude: '',
+          longitude: '',
+          latitudeDelta: '',
+          longitudeDelta: ''
+        }
+      });
+      console.log(this.state.region);
+    }
   }
 
   /**
@@ -176,6 +187,7 @@ class Home extends Component {
         && (
         <Addresses
           getDestinationIfSet={this.state.destinationToGo}
+          getDestinationIfSetFun={this.getDestinationIfSet}
           getRegion={this.getRegionFromAddresses}
           getRegionFromSearch={this.state.region}
           getCoordinates={this.getCoordinatesFromAddresses}
